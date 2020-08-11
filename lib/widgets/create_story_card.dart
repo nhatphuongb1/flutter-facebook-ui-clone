@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_clone/config/palette.dart';
 import 'package:flutter_facebook_clone/models/models.dart';
-import 'package:flutter_facebook_clone/widgets/widgets.dart';
 
 class CreateStoryCard extends StatelessWidget {
   final Story story;

@@ -14,20 +14,20 @@ class PostContents extends StatelessWidget {
               "This hero is playing a critical role in Kenya’s preparations to tackle COVID-19 by scaling up medical oxygen supplies that will be needed to keep the most critically ill patients alive."),
         ),
         Container(
-          alignment: Alignment.topLeft,
-          padding: EdgeInsets.all(4),
-          child: Text(
-            "Xem bản dịch",
-            style: TextStyle(color: Colors.grey),
-          ),
-        ),
+            alignment: Alignment.topLeft,
+            padding: EdgeInsets.all(4),
+            child: InkWell(
+              child: Text(
+                "Xem bản dịch",
+                style: TextStyle(color: Colors.grey),
+              ),
+            )),
         Container(
             alignment: Alignment.topLeft,
             padding: EdgeInsets.all(4),
             child: CachedNetworkImage(
               imageUrl:
                   "https://media.gatesnotes.com/-/media/Images/Articles/Health/Heroes-in-the-Field-Dr-Bernard-Olayo/hitf-bernard-olayo_2020_article-hero_1200x564_01.ashx",
-              height: 200,
               width: double.infinity,
               fit: BoxFit.cover,
             )),

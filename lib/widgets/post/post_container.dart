@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_clone/models/models.dart';
 import 'post.dart';
+import 'post_status.dart';
 
 class PostContainer extends StatelessWidget {
   final Post post;
@@ -15,7 +16,12 @@ class PostContainer extends StatelessWidget {
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [PostHeader(post: post), PostContents(), PostActionBar()],
+        children: [
+          PostHeader(post: post),
+          PostContents(),
+          PostStatus(),
+          PostButtons()
+        ],
       ),
     );
   }

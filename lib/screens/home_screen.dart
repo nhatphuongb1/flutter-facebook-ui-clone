@@ -9,58 +9,63 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              pinned: false,
-              brightness: Brightness.light,
-              backgroundColor: Colors.white,
-              title: Text(
-                "facebook",
-                style: TextStyle(
-                    color: Palette.facebookBlue,
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: -1.2),
-              ),
-              centerTitle: false,
-              floating: true,
-              actions: [
-                CircleButton(
-                  icon: Icons.search,
-                  iconSize: 25,
-                  onPressed: () => print("Search"),
+        child: Center(
+          child: Container(
+            constraints: BoxConstraints(minWidth: 200, maxWidth: 700),
+            child: CustomScrollView(
+              slivers: [
+                SliverAppBar(
+                  pinned: false,
+                  brightness: Brightness.light,
+                  backgroundColor: Colors.white,
+                  title: Text(
+                    "facebook",
+                    style: TextStyle(
+                        color: Palette.facebookBlue,
+                        fontSize: 28.0,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: -1.2),
+                  ),
+                  centerTitle: false,
+                  floating: true,
+                  actions: [
+                    CircleButton(
+                      icon: Icons.search,
+                      iconSize: 25,
+                      onPressed: () => print("Search"),
+                    ),
+                    CircleButton(
+                      icon: MdiIcons.facebookMessenger,
+                      iconSize: 25,
+                      onPressed: () => print("Messager"),
+                    ),
+                  ],
                 ),
-                CircleButton(
-                  icon: MdiIcons.facebookMessenger,
-                  iconSize: 25,
-                  onPressed: () => print("Messager"),
+                SliverToBoxAdapter(
+                    child: CreatePostContainer(currentUser: currentUser)),
+                SliverPadding(
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+                  sliver: SliverToBoxAdapter(
+                    child: Rooms(
+                      onlineUsers: onlineUsers,
+                    ),
+                  ),
+                ),
+                SliverPadding(
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+                  sliver: SliverToBoxAdapter(
+                    child: Stories(currentUser: currentUser, stories: stories),
+                  ),
+                ),
+                SliverPadding(
+                  padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
+                  sliver: SliverToBoxAdapter(
+                    child: PostContainer(),
+                  ),
                 ),
               ],
             ),
-            SliverToBoxAdapter(
-                child: CreatePostContainer(currentUser: currentUser)),
-            SliverPadding(
-              padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
-              sliver: SliverToBoxAdapter(
-                child: Rooms(
-                  onlineUsers: onlineUsers,
-                ),
-              ),
-            ),
-            SliverPadding(
-              padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
-              sliver: SliverToBoxAdapter(
-                child: Stories(currentUser: currentUser, stories: stories),
-              ),
-            ),
-            SliverPadding(
-              padding: EdgeInsets.fromLTRB(0, 10, 0, 5),
-              sliver: SliverToBoxAdapter(
-                child: PostContainer(),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

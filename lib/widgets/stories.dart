@@ -17,7 +17,9 @@ class Stories extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+              padding: EdgeInsets.symmetric(
+                vertical: 10,
+              ),
               width: double.infinity,
               height: 180,
               color: Colors.white,
