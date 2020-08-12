@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_clone/data/data.dart';
+import 'package:flutter_facebook_clone/widgets/responsive.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../widgets/widgets.dart';
@@ -32,18 +34,36 @@ class _NavScreenState extends State<NavScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
     return DefaultTabController(
         length: _icons.length,
         child: Scaffold(
-          body: TabBarView(children: _screens),
-          bottomNavigationBar: Container(
-            constraints: BoxConstraints(minWidth: 200, maxWidth: 300),
-            child: CustomTabBar(
-              icons: _icons,
-              selectedIndex: _selectedIndex,
-              onTap: (index) => setState(() => _selectedIndex = index),
+            appBar: Responsive.isDesktop(context)
+                ? PreferredSize(
+                    preferredSize: Size(screenSize.width, 100),
+                    child: CustomAppBar(
+                        currentUser: currentUser,
+                        icons: _icons,
+                        selectedIndex: _selectedIndex,
+                        onTap: (index) =>
+                            setState(() => _selectedIndex = index)),
+                  )
+                : null,
+            body: IndexedStack(
+              index: _selectedIndex,
+              children: _screens,
             ),
-          ),
-        ));
+            bottomNavigationBar: !Responsive.isDesktop(context)
+                ? Container(
+                    constraints: BoxConstraints(minWidth: 200, maxWidth: 300),
+                    color: Colors.white,
+                    child: CustomTabBar(
+                      icons: _icons,
+                      selectedIndex: _selectedIndex,
+                      onTap: (index) => setState(() => _selectedIndex = index),
+                    ),
+                  )
+                : SizedBox.shrink()));
   }
 }

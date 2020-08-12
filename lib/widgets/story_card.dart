@@ -49,9 +49,16 @@ class StoryCard extends StatelessWidget {
             height: double.infinity,
             width: 110,
             decoration: BoxDecoration(
-              gradient: Palette.story,
-              borderRadius: BorderRadius.circular(12),
-            ),
+                gradient: Palette.story,
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: Responsive.isDesktop(context)
+                    ? [
+                        BoxShadow(
+                            color: Colors.black26,
+                            offset: Offset(0, 2),
+                            blurRadius: 4.0)
+                      ]
+                    : null),
           ),
           Positioned(
             top: 8,
